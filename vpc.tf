@@ -1,7 +1,7 @@
 data "aws_availability_zones" "available" {}
 
 locals {
-  cluster_name = "Octopus-eks-${var.env}"
+  cluster_name = "Octopus-eks" #need to raplacw with env 'Octopus-eks-${var.env}'
 }
 
 module "vpc" {
@@ -20,19 +20,19 @@ module "vpc" {
   enable_dns_hostnames = true
 
   tags = {
-    "kubernetes.io/cluser/${locals.cluster_name}" = "shared"
-    "Project"                                     = "Octopus-${var.env}"
+    "kubernetes.io/cluser/${local.cluster_name}" = "shared"
+    "Project"                                    = "Octopus-${var.env}"
   }
 
   public_subnet_tags = {
-    "kubernetes.io/cluser/${locals.cluster_name}" = "shared"
-    "kubernetes.io/role/elb"                      = "1"
-    "Project"                                     = "Octopus-${var.env}"
+    "kubernetes.io/cluser/${local.cluster_name}" = "shared"
+    "kubernetes.io/role/elb"                     = "1"
+    "Project"                                    = "Octopus-${var.env}"
   }
 
   private_subnet_tags = {
-    "kubernetes.io/cluser/${locals.cluster_name}" = "shared"
-    "kubernetes.io/role/elb"                      = "1"
-    "Project"                                     = "Octopus-${var.env}"
+    "kubernetes.io/cluser/${local.cluster_name}" = "shared"
+    "kubernetes.io/role/elb"                     = "1"
+    "Project"                                    = "Octopus-${var.env}"
   }
 }
