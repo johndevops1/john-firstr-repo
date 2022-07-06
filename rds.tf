@@ -5,7 +5,7 @@ resource "aws_db_subnet_group" "octopus-rds-subnet-group" {
 }
 
 resource "aws_db_instance" "Octopus-rds" {
-  identifier              = "Octopus-rds"
+  identifier              = "octopus-rds"
   allocated_storage       = 10
   engine                  = var.rds_engine
   instance_class          = var.rds_instance_class
