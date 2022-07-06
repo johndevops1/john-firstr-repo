@@ -89,6 +89,7 @@ jobs:
       id: init
       run: |
         terraform init
+        terraform force-unlock 4e8a37dd-0822-3939-2ea0-9b6935b43323
         terraform workspace select ${{ github.event.inputs.environment }} && terraform plan
         terraform workspace select ${{ github.event.inputs.environment }} && terraform apply --var-file="${{ github.event.inputs.environment }}.tfvars" -auto-approve
 
