@@ -91,13 +91,13 @@ jobs:
     # Generates an execution plan for Terraform
     - name: Terraform Workflow with workspaces
       run: |
-        terraform workspace new '${{ env.environment }}'
+        terraform workspace new ${{ github.event.inputs.environment }}
         
     - name: Terraform Plan
-      run: terraform workspace select ${{ env.environment }} && terraform plan
+      run: terraform workspace select ${{ github.event.inputs.environment }} && terraform plan
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       # if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
-      run: terraform workspace select ${{ env.environment }} && terraform apply --var-file="${{ env.environment }}.tfvars" -auto-approve
+      run: terraform workspace select ${{ github.event.inputs.environment }} && terraform apply --var-file="${{ github.event.inputs.environment }}.tfvars" -auto-approve
