@@ -15,18 +15,18 @@ module "vpc" {
 
   tags = {
     "kubernetes.io/cluser/${local.cluster_name}" = "shared"
-    "Project"                                   = "Octopus-${var.env}"
+    "Project"                                    = "Octopus-${var.env}"
   }
 
   public_subnet_tags = {
     "kubernetes.io/cluser/${local.cluster_name}" = "shared"
-    "kubernetes.io/role/elb"                    = "1"
-    "Project"                                   = "Octopus-${var.env}"
+    "kubernetes.io/role/elb"                     = "1"
+    "Project"                                    = "Octopus-${var.env}"
   }
 
   private_subnet_tags = {
     "kubernetes.io/cluser/${local.cluster_name}" = "shared"
-    "kubernetes.io/role/elb"                    = "1"
-    "Project"                                   = "Octopus-${var.env}"
+    "kubernetes.io/role/elb"                     = "1"
+    "Project"                                    = "Octopus-${var.env}"
   }
 }
