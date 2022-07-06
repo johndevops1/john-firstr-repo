@@ -89,7 +89,8 @@ jobs:
       id: init
       run: |
         terraform init
-        terraform workspace select ${{ github.event.inputs.environment }} && terraform plan
+        terraform workspace select ${{ github.event.inputs.environment }}
+        terraform plan
         terraform workspace select ${{ github.event.inputs.environment }} && terraform apply --var-file="${{ github.event.inputs.environment }}.tfvars" -auto-approve
 
 
