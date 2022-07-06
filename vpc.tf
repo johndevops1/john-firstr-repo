@@ -6,7 +6,7 @@ module "vpc" {
 
   name                 = "Octopus-${var.env}"
   cidr                 = var.vpc_cidr
-  azs                  = data.aws_availability_zones.names
+  azs                  = data.aws_availability_zones.available.names
   private_subnets      = element(var.private_subnets, count.index)
   public_subnets       = element(var.public_subnets, count.index)
   enable_nat_gateway   = true
