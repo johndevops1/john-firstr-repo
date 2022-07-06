@@ -85,10 +85,15 @@ jobs:
       run: terraform fmt -check
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    - name: Terraform workspace and workflow
+
+    - name: Terraform Init
       id: init
+      run: terraform init
+      env:
+        TF_WORKSPACE: "dev"
+
+    - name: Terraform workspace and workflow
       run: |
-        terraform init
         terraform workspace select ${{ github.event.inputs.environment }} && terraform plan
         terraform workspace select ${{ github.event.inputs.environment }} && terraform apply --var-file="${{ github.event.inputs.environment }}.tfvars" -auto-approve
 
