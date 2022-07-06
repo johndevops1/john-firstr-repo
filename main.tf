@@ -3,8 +3,8 @@ resource "aws_instance" "my_test" {
   ami           = "ami-02f3416038bdb17fb"
   instance_type = "t2.micro"
   tags = {
-    Name                                  = "octopus-${var.env}"
-    kubernetes.io / cluster / Octopus-eks = var.env
+    Name    = "octopus-${var.env}"
+    Project = var.env
   }
 }
 
