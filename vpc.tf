@@ -1,5 +1,9 @@
 data "aws_availability_zones" "available" {}
 
+locals {
+  cluster_name = "Octopus-eks-${var.env}"
+}
+
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.2.0"

@@ -1,7 +1,3 @@
-locals {
-  cluster_name = "Octopus-eks-${var.env}"
-}
-
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
   version         = "17.24.0"

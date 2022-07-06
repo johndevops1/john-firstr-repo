@@ -1,5 +1,5 @@
 resource "aws_db_subnet_group" "octopus-rds-subnet-group" {
-  name        = "Octopus rds subnet"
+  name        = "octopus rds subnet"
   description = "Subnet attaching to this RDS instance"
   subnet_ids  = module.vpc.private_subnets
 }
