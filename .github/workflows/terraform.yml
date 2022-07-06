@@ -89,9 +89,9 @@ jobs:
       run: terraform fmt -check
 
     # Generates an execution plan for Terraform
-    - name: Terraform Workflow with workspaces
-      run: |
-        terraform workspace new ${{ github.event.inputs.environment }}
+    #- name: Terraform Workflow with workspaces
+    #  run: |
+    #    terraform workspace new ${{ github.event.inputs.environment }}
         
     - name: Terraform Plan
       run: terraform workspace select ${{ github.event.inputs.environment }} && terraform plan
