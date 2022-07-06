@@ -4,8 +4,6 @@ resource "aws_instance" "my_test" {
   instance_type = "t2.micro"
   tags = {
     Name    = "octopus-${var.env}"
-    Project = var.env
+    Project = "Octopus-${var.env}"
   }
 }
-
-variable "env" {}
