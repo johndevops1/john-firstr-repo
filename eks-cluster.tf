@@ -15,7 +15,7 @@ module "eks" {
     root_volume_type = "gp2"
   }
 
-  workers_groups = [
+  worker_groups = [
     {
       name                         = "worker-group-1"
       instance_type                = var.instance_type_wg1
