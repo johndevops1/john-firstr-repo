@@ -1,5 +1,9 @@
 data "aws_availability_zones" "available" {}
 
+locals {
+  cluster_name = "Octopus-eks-${var.env}"
+}
+
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.2.0"
@@ -16,19 +20,19 @@ module "vpc" {
   enable_dns_hostnames = true
 
   tags = {
-    "kubernetes.io/cluser/${local.cluster_name}" = "shared"
-    "Project"                                    = "Octopus-${var.env}"
+    "kubernetes.io/cluser/${locals.cluster_name}" = "shared"
+    "Project"                                     = "Octopus-${var.env}"
   }
 
   public_subnet_tags = {
-    "kubernetes.io/cluser/${local.cluster_name}" = "shared"
-    "kubernetes.io/role/elb"                     = "1"
-    "Project"                                    = "Octopus-${var.env}"
+    "kubernetes.io/cluser/${locals.cluster_name}" = "shared"
+    "kubernetes.io/role/elb"                      = "1"
+    "Project"                                     = "Octopus-${var.env}"
   }
 
   private_subnet_tags = {
-    "kubernetes.io/cluser/${local.cluster_name}" = "shared"
-    "kubernetes.io/role/elb"                     = "1"
-    "Project"                                    = "Octopus-${var.env}"
+    "kubernetes.io/cluser/${locals.cluster_name}" = "shared"
+    "kubernetes.io/role/elb"                      = "1"
+    "Project"                                     = "Octopus-${var.env}"
   }
 }
