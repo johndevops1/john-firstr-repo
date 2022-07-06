@@ -63,6 +63,7 @@ jobs:
     env: 
       AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+      TF_VAR_rds_password: ${{ secrets.RDS_PASSWORD }}
       TF_VAR_rds_password_dev: ${secrets.RDS_PASSWORD_DEV}
       TF_VAR_rds_password_prod: ${secrets.RDS_PASSWORD_PROD}
 
