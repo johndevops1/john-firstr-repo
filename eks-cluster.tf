@@ -29,6 +29,9 @@ module "eks" {
       tags                         = { Project = "Octopus-${var.env}" }
     }
   ]
+  depends_on = [
+    module.vpc
+  ]
 }
 
 data "aws_eks_cluster" "cluster" {
