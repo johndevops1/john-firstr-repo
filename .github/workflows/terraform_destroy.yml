@@ -42,7 +42,7 @@
 #       with:
 #         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-name: 'Terraform_apply'
+name: 'Terraform destroy'
 
 on:
   workflow_dispatch:
@@ -57,7 +57,7 @@ permissions:
 
 jobs:
   terraform:
-    name: 'Terraform'
+    name: 'Terraform destroy'
     runs-on: ubuntu-latest
     environment: '${{ github.event.inputs.environment }}'
     env: 
@@ -97,9 +97,9 @@ jobs:
 
     - name: Terraform workspace and workflow
       run: |
-        terraform workspace select ${{ github.event.inputs.environment }} && terraform state rm aws_db_instance.octopus-rds && terraform destroy --var-file="${{ github.event.inputs.environment }}.tfvars" -auto-approve
+        terraform workspace select ${{ github.event.inputs.environment }} && terraform destroy --var-file="${{ github.event.inputs.environment }}.tfvars" -auto-approve
 
-    #terraform workspace select ${{ github.event.inputs.environment }} && terraform plan --var-file="${{ github.event.inputs.environment }}.tfvars"
+    #terraform workspace select ${{ github.event.inputs.environment }} && terraform state rm aws_db_instance.octopus-rds && terraform destroy --var-file="${{ github.event.inputs.environment }}.tfvars"
 
     # Generates an execution plan for Terraform
     #- name: Terraform Workflow with workspaces
