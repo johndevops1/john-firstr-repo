@@ -97,6 +97,7 @@ jobs:
 
     - name: Terraform workspace and workflow
       run: |
+        terraform state list
         terraform workspace select ${{ github.event.inputs.environment }} && terraform plan --var-file="${{ github.event.inputs.environment }}.tfvars"
         terraform workspace select ${{ github.event.inputs.environment }} && terraform apply --var-file="${{ github.event.inputs.environment }}.tfvars" -auto-approve
 
