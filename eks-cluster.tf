@@ -5,7 +5,7 @@ module "eks" {
   cluster_version = "1.21"
   subnets         = module.vpc.private_subnets
   vpc_id          = module.vpc.vpc_id
-  tags            = { Project = "Octopus-${var.env}" }
+  tags            = { project = "octopus-${var.env}" }
 
   workers_group_defaults = {
     root_volume_type = "gp2"
@@ -18,19 +18,16 @@ module "eks" {
       additional_security_group_id = [aws_security_group.worker_group_mgmt_one.id]
       asg_desired_capacity         = 1
       root_volume_size             = 10
-      tags                         = { Project = "Octopus-${var.env}" }
+      # tags                         = { Project = "Octopus-${var.env}" }
     },
     {
       name                         = "worker-group-2"
       instance_type                = var.instance_type_wg2
-      additional_security_group_id = [aws_security_group.worker_group_mgmt_one.id]
+      additional_security_group_id = [aws_security_group.worker_group_mgmt_two.id]
       asg_desired_capacity         = 1
       root_volume_size             = 10
-      tags                         = { Project = "Octopus-${var.env}" }
+      # tags                         = { Project = "Octopus-${var.env}" }
     }
-  ]
-  depends_on = [
-    module.vpc
   ]
 }
 

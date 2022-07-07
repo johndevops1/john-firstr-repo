@@ -11,7 +11,7 @@ resource "aws_security_group" "worker_group_mgmt_one" {
       "10.0.0.0/8",
     ]
   }
-  tags = { Project = "Octopus-${var.env}" }
+  tags = { Project = "octopus-${var.env}" }
 }
 
 resource "aws_security_group" "worker_group_mgmt_two" {
@@ -27,7 +27,7 @@ resource "aws_security_group" "worker_group_mgmt_two" {
       "192.168.0.0/16",
     ]
   }
-  tags = { Project = "Octopus-${var.env}" }
+  tags = { Project = "octopus-${var.env}" }
 }
 
 resource "aws_security_group" "all_worker_mgmt" {
@@ -45,7 +45,7 @@ resource "aws_security_group" "all_worker_mgmt" {
       "192.168.0.0/16",
     ]
   }
-  tags = { Project = "Octopus-${var.env}" }
+  tags = { Project = "octopus-${var.env}" }
 }
 
 resource "aws_security_group" "rds-securitygroup" {
@@ -63,5 +63,5 @@ resource "aws_security_group" "rds-securitygroup" {
       "192.168.0.0/16",
     ]
   }
-  tags = { Project = "Octopus-${var.env}" }
+  tags = { Project = "octopus-${var.env}" }
 }
