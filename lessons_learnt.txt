@@ -1,0 +1,13 @@
+rds_password_dev = Passworddev
+rds_password_prod	= Passworddev
+rds_password = Passwordcommon
+
+
+https://walkthrough.so/pblc/pHjklthzWFvI/how-to-create-a-vpc-subnet-and-networking-setup-in-aws-using-terraform?sn=2  - like this a lot
+
+
+lessons lerant hard way
+https://coderbook.com/@marcus/prevent-terraform-from-recreating-or-deleting-resource/
+https://stackoverflow.com/questions/67498349/terraform-single-resource-on-multiple-workspaces
+https://stackoverflow.com/questions/55265203/terraform-delete-all-resources-except-one
+https://github.com/johndevops1/john-firstr-repo/actions/workflows/terraform_apply.yml

@@ -1,13 +1,13 @@
 terraform {
   backend "s3" {
-    bucket         = "octopus-dev-infra-terraform-state"
-    key            = "global/s3/terraform.tfstate"
-    region         = "us-east-2"
-    dynamodb_table = "terraform-dev-state-locking"
-    encrypt        = true
+    bucket = "octopus-infra-terraform-state"
+    key    = "global/s3-workspace-test/terraform.tfstate"
+    region = "eu-west-1"
+    # dynamodb_table = "terraform-dev-state-locking"
+    encrypt = true
   }
 }
 
 provider "aws" {
-  region = "us-east-2"
+  region = "eu-west-1"
 }

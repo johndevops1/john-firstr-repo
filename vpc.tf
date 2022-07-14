@@ -10,8 +10,8 @@ module "vpc" {
 
   #count = length(var.private_subnets)
 
-  name            = "octopus-${var.env}" #"octopus-vpc"
-  cidr            = var.vpc_cidr         #"10.2.0.0/16"
+  name            = "octopus-vpc-${var.env}" #"octopus-vpc"
+  cidr            = var.vpc_cidr             #"10.2.0.0/16"
   azs             = data.aws_availability_zones.available.names
   private_subnets = var.private_subnets #["10.2.1.0/24", "10.2.2.0/24", "10.2.3.0/24"] #cidrsubnet("${var.vpc_cidr}", 8, 1)
   public_subnets  = var.public_subnets  #["10.2.4.0/24", "10.2.5.0/24", "10.2.6.0/24"] #cidrsubnet("${var.vpc_cidr}", 8, 2)
@@ -23,18 +23,18 @@ module "vpc" {
 
   tags = {
     "kubernetes.io/cluser/${local.cluster_name}" = "shared"
-    "Project"                                    = "octopus-${var.env}"
+    "project"                                    = "octopus-${var.env}"
   }
 
   public_subnet_tags = {
     "kubernetes.io/cluser/${local.cluster_name}" = "shared"
     "kubernetes.io/role/elb"                     = "1"
-    "Project"                                    = "octopus-${var.env}"
+    "project"                                    = "octopus-${var.env}"
   }
 
   private_subnet_tags = {
     "kubernetes.io/cluser/${local.cluster_name}" = "shared"
     "kubernetes.io/role/elb"                     = "1"
-    "Project"                                    = "octopus-${var.env}"
+    "project"                                    = "octopus-${var.env}"
   }
 }
