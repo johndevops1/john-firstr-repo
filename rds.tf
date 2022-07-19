@@ -26,8 +26,3 @@ resource "aws_db_instance" "octopus-rds" {
   license_model           = "license-included"
   tags                    = { project = "octopus-${var.env}" }
 }
-
-output "rds_endpoint_url" {
-  description = "Get the rds endpoint value for connection string"
-  value       = aws_db_instance.octopus-rds.address
-}
