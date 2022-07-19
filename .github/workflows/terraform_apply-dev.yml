@@ -102,13 +102,13 @@ jobs:
     - name: Terraform workspace select and apply
       id: terraform-output
       run: |
-        terraform workspace select ${{ github.event.inputs.environment }} && terraform apply --var-file="${{ github.event.inputs.environment }}.tfvars" -auto-approve -out terraform-output.out
+        terraform workspace select ${{ github.event.inputs.environment }} && terraform apply --var-file="${{ github.event.inputs.environment }}.tfvars" -auto-approve
 
     - name: artifacts
       uses: actions/upload-artifact@v1
       with:
         name: terraform-output
-        path: terraform-output.out
+        path: ${{ steps.terraform-out.outputs.testfile-1 }}
 
     # Generates an execution plan for Terraform
     #- name: Terraform Workflow with workspaces
