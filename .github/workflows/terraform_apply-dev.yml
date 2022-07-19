@@ -106,10 +106,10 @@ jobs:
         testfile1=$(terraform output)
 
     - name: artifacts
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
-        name: terraform-output
-        path: ${{ steps.terraform-output.testfile1 }}
+        name: terraform-output-dev
+        path: ${testfile1}
 
     # Generates an execution plan for Terraform
     #- name: Terraform Workflow with workspaces
