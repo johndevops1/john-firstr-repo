@@ -102,7 +102,7 @@ jobs:
     - name: Terraform workspace select and apply
       id: terraform-output
       run: |
-        terraform workspace select ${{ github.event.inputs.environment }} && terraform apply --var-file="${{ github.event.inputs.environment }}.tfvars" -out "output.tf" -auto-approve
+        terraform workspace select ${{ github.event.inputs.environment }} && terraform apply --var-file="${{ github.event.inputs.environment }}.tfvars" -auto-approve
         testfile1=$(terraform output)
 
     - name: artifacts
