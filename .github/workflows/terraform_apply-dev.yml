@@ -109,7 +109,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: terraform-output
-        path: ${{ steps.terraform-output.testfile }}
+        path: ${{ steps.terraform-output.testfile1 }}
 
     # Generates an execution plan for Terraform
     #- name: Terraform Workflow with workspaces
