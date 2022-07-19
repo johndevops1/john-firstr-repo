@@ -1,4 +1,5 @@
 variable "env" {}
+variable "region" {}
 variable "instance_type_wg1" {}
 variable "instance_type_wg2" {}
 variable "rds_engine" {}

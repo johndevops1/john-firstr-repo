@@ -33,7 +33,3 @@ output "cluster_name" {
   value       = local.cluster_name
 }
 
-output "rds_endpoint_url" {
-  description = "Get the rds endpoint value for connection string"
-  value       = aws_db_instance.octopus-rds.address
-}
