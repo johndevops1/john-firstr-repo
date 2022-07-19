@@ -97,7 +97,6 @@ jobs:
 
     - name: Terraform workspace create, select and plan
       run: |
-        terraform workspace new ${{ github.event.inputs.environment }}
         terraform workspace select ${{ github.event.inputs.environment }} && terraform plan --var-file="${{ github.event.inputs.environment }}.tfvars"
 
     - name: Terraform workspace select and apply
