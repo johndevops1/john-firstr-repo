@@ -105,11 +105,17 @@ jobs:
         terraform workspace select ${{ github.event.inputs.environment }} && terraform apply --var-file="${{ github.event.inputs.environment }}.tfvars" -auto-approve
         terraform output -json
 
-    - name: artifacts upload
+    - name: Save artifacts in Json format 
       uses: fishcharlie/CmdToFile@v1.0.0
       with:
         data: ${{ steps.terraformOutputJson.outputs.stdout }}
         output: outputfile-${{ github.event.inputs.environment }}.json
+
+    - name: artifacts upload
+      uses: actions/upload-artifact@v3
+      with:
+        name: terraform-output-${{ github.event.inputs.environment }}
+        path: outputfile-${{ github.event.inputs.environment }}.json
 
     # Generates an execution plan for Terraform
     #- name: Terraform Workflow with workspaces
