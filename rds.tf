@@ -26,3 +26,4 @@ resource "aws_db_instance" "octopus-rds" {
   license_model           = "license-included"
   tags                    = { project = "octopus-${var.env}" }
 }
+
