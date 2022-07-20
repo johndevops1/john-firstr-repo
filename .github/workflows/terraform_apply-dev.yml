@@ -103,7 +103,7 @@ jobs:
       id: terraform-output
       run: |
         terraform workspace select ${{ github.event.inputs.environment }} && terraform apply --var-file="${{ github.event.inputs.environment }}.tfvars" -auto-approve
-        terraform output > outputfile-${{ github.event.inputs.environment }}
+        terraform output -json > outputfile-${{ github.event.inputs.environment }}.json
 
     - name: artifacts upload
       uses: actions/upload-artifact@v3
