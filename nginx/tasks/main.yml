@@ -1,5 +1,3 @@
 ---
 - include: nginx.yml
-- include: deploy_code_with_copy.yml
-- include: deploy_code_with_templates.yml
 
