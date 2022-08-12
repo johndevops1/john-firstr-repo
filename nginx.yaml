@@ -11,3 +11,4 @@
       file:
         name: newfile
         path: /tmp/
+        state: touch
