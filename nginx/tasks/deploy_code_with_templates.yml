@@ -1,5 +1,5 @@
 ---
-- name: run task on all hosts
+- name: Deploy Code with Template
   template:
     src: nginx_config.j2
     dest: /tmp/baj
