@@ -3,4 +3,4 @@
   template:
     src: nginx_config.j2
     dest: /etc/nginx/sites-enabled/default
-  notify: Restart Nginx
+#  notify: Restart Nginx
