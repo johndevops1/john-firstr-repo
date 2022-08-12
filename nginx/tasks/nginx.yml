@@ -5,7 +5,7 @@
   service:
       name: nginx
       state: started
-- name: Changing the content in the root directory
-  copy: 
-    content: "This is the new code deployed"
-    dest: /var/www/html/index.nginx-debian.html
+# - name: Changing the content in the root directory
+#   copy: 
+#     content: "This is the new code deployed"
+#     dest: /var/www/html/index.nginx-debian.html
