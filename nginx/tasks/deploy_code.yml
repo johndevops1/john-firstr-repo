@@ -1,0 +1,5 @@
+---
+- name: deploy code
+  copy:
+    src: index.html
+    dest: 
