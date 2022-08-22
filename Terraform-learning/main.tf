@@ -3,44 +3,43 @@ provider "aws" {
   region     = "us-east-1"
 }
 
+terraform {
+  backend "s3" {
+    bucket = "johndevops-terraform-backend"
+    key    = "global/s3/terraform.tfstate"
+    region = "us-east-1"
+    # dynamodb_table = "terraform-dev-state-locking"
+    encrypt = true
+  }
+}
+
 resource "aws_instance" "example" {
   ami           = "ami-2757f631"
   instance_type = "t2.micro"
   key_name	= "Devops-key"
+  #vpc_security_group_ids = aws_vpc.create-VPC.default_security_group_id
   tags = {
-    "Name" = "terraform-launch"
+    "Name" = "terraform-launch-dev"
   }
 }
 
-resource "aws_s3_bucket" "creating_bucket" {
-  bucket = "johndevopsuk1"
+resource "aws_vpc" "create-VPC" {
   tags = {
-    "Name" = "testing"
-     }
-  lifecycle {
-    prevent_destroy = true
+    "Name" = "dev-vpc"
   }
-
-  versioning {
-    enabled = true
-  }
-   
+  cidr_block = var.cidr
 }
 
+resource "aws_subnet" "crate-subnet" {
+  vpc_id     = aws_vpc.create-VPC.id
+  cidr_block = var.subnet_cidr
 
-#resource "aws_s3_bucket" "octopus_infra_s3_dev" {
-#  bucket = "octopus-dev-infra-terraform-state"
-#  lifecycle {
-#    prevent_destroy = true
-#  }
-#  versioning {
-#    enabled = true
-#  }
-#  server_side_encryption_configuration {
-#    rule {
-#      apply_server_side_encryption_by_default {
-#        sse_algorithm = "AES256"
-#      }
-#    }
-#  }
-#}
+  tags = {
+    Name = "Main"
+  }
+}
+
+output "vpc-security-group-name-id" {
+  description = "vpc-security-id"
+  value       = aws_vpc.create-VPC.default_security_group_id
+}
